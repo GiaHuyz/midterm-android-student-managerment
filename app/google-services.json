@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "219218503614",
+    "project_id": "midterm-student-management",
+    "storage_bucket": "midterm-student-management.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219218503614:android:854a7cae7b9c0ca900bbef",
+        "android_client_info": {
+          "package_name": "com.example.qlsv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJuFsrPkRZ698i0Zva2e_NTBt94cZUtew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

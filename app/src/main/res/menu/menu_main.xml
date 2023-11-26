@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item_removed_selected"
+        android:icon="@drawable/ic_baseline_delete_24"
+        android:title="Remove Selected"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_item_addstudent"
+        android:title="Add" />
+    <item
+        android:id="@+id/menu_item_removed_all"
+        android:title="Remove All" />
+    <item
+        android:id="@+id/menu_item_view_access_history"
+        android:title="View access history" />
+</menu>

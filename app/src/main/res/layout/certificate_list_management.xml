@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    tools:context=".LoginActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvQLCC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3F90B5"
+        android:text="Danh sách chứng chỉ"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+    <ListView
+        android:id="@+id/lv_chungchi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
