@@ -1,8 +1,10 @@
 package com.example.qlsv.contract;
 
+import com.example.qlsv.dto.User;
+
 public interface LoginContract {
     interface View {
-        void loginSuccess();
+        void loginSuccess(User user);
         void loginFailure(String errorMessage);
     }
 
@@ -14,7 +16,7 @@ public interface LoginContract {
         void performLogin(String email, String password, OnLoginListener listener);
 
         interface OnLoginListener {
-            void onSuccess();
+            void onSuccess(User user);
             void onFailure(String errorMessage);
         }
     }

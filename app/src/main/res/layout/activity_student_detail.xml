@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity"
+    android:background="@drawable/background_color">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="411dp"
+                    android:layout_height="687dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="360dp"
+                        android:background="@drawable/top_background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints">
+
+
+                        <ImageView
+                            android:id="@+id/imageView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="131dp"
+                            android:layout_marginEnd="101dp"
+                            android:src="@android:drawable/ic_menu_edit"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvTTUS"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#3F90B5"
+                        android:text="Thông tin người dùng"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imgUS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.498"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+
+                    <LinearLayout
+                        android:layout_width="375dp"
+                        android:layout_height="500dp"
+                        android:layout_marginStart="24dp"
+
+                        android:layout_marginTop="36dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@drawable/white_background"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgUS">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="500dp"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/edtMSSV"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:drawableStart="@drawable/baseline_credit_card_24"
+                                android:hint="Student ID"
+                                android:inputType="text"
+                                android:minHeight="48dp" />
+
+                            <EditText
+                                android:id="@+id/edtName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:drawableStart="@drawable/ic_iconperson"
+                                android:hint="Name"
+                                android:inputType="text"
+                                android:minHeight="48dp" />
+
+                            <EditText
+                                android:id="@+id/edtAge"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:drawableStart="@drawable/ic_iconperson"
+                                android:hint="Age"
+                                android:inputType="text"
+                                android:minHeight="48dp" />
+
+                            <EditText
+                                android:id="@+id/edtPhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:drawableStart="@drawable/baseline_phone_forwarded_24"
+                                android:hint="Phone"
+                                android:inputType="text"
+                                android:minHeight="48dp" />
+
+                            <EditText
+                                android:id="@+id/edtEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:drawableStart="@drawable/baseline_mark_email_read_24"
+                                android:hint="Email"
+                                android:inputType="text"
+                                android:minHeight="48dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Role: "
+                                    android:textSize="24dp" />
+
+                                <RadioGroup
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rdRoleAdmin"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Admin"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                    <RadioButton
+                                        android:id="@+id/rdRoleManager"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Manager"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                    <RadioButton
+                                        android:id="@+id/rdRoleStudent"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Student"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                </RadioGroup>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Status: "
+                                    android:textSize="24dp" />
+
+                                <RadioGroup
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rdStatusNormal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Normal"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                    <RadioButton
+                                        android:id="@+id/rdStatusLocked"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Locked"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                </RadioGroup>
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/btnEdit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:minHeight="48dp"
+                                android:text="Save" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

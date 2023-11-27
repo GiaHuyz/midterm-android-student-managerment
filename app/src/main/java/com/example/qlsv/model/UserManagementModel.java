@@ -16,16 +16,19 @@ public class UserManagementModel implements UserManagementContract.Model {
     }
 
     @Override
-    public void getUsers(OnFinishedListener listener) {
-        firestore.collection("users")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<User> students = new ArrayList<>();
-                    for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
-                        students.add(snapshot.toObject(User.class));
-                    }
-                    listener.onFinished(students);
-                })
-                .addOnFailureListener(listener::onFailure);
+    public void getUsers(String currentUserId, OnFinishedListener listener) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users").get().addOnSuccessListener(queryDocumentSnapshots -> {
+            List<User> users = new ArrayList<>();
+            for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
+                User user = snapshot.toObject(User.class);
+                if (user != null && !snapshot.getId().equals(currentUserId)) {
+                    user.setId(snapshot.getId());
+                    users.add(user);
+                }
+            }
+            listener.onFinished(users);
+        }).addOnFailureListener(listener::onFailure);
     }
 }
+

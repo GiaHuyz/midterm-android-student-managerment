@@ -16,8 +16,8 @@ public class UserManagementPresenter implements UserManagementContract.Presenter
     }
 
     @Override
-    public void loadUsers() {
-        model.getUsers(new UserManagementContract.Model.OnFinishedListener() {
+    public void loadUsers(String currentUserId) {
+        model.getUsers(currentUserId, new UserManagementContract.Model.OnFinishedListener() {
             @Override
             public void onFinished(List<User> users) {
                 view.display(users);

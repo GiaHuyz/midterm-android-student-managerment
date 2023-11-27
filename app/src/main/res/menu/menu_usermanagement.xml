@@ -8,10 +8,9 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_item_addUS"
-        android:title="Add " />
-    <item
-        android:id="@+id/menu_item_removed_all_US"
-        android:title="Remove All" />
+        android:icon="@drawable/baseline_add_24"
+        android:title="Remove Selected"
+        app:showAsAction="always" />
     <item
         android:id="@+id/menu_item_view_access_history_US"
         android:title="View access history" />

@@ -8,15 +8,16 @@
     tools:context=".LoginActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvQLUS"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="Manage users"
+        app:titleTextColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3F90B5"
-        android:text="Quản lý người dùng "
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:background="#0F9D58"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUsers"
