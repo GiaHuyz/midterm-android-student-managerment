@@ -61,6 +61,8 @@ public class UserManagementActivity extends AppCompatActivity implements UserMan
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
+
+
     @Override
     public void onItemClick(User user, int position) {
         Intent intent;
