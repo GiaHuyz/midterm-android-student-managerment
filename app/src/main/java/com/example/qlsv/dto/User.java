@@ -13,8 +13,10 @@ public class User implements Serializable {
     private String phone;
     private String status;
     private String role;
+    private String avatarURL;
 
-    private Map<String, Object> studentInfo;
+    private String studentId;
+    private List<Certificates> certificates;
 
     public User() {
     }
@@ -85,25 +87,27 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public Map<String, Object> getStudentInfo() {
-        return studentInfo;
+    public String getAvatarURL() {
+        return avatarURL;
     }
 
-    public void setStudentInfo(Map<String, Object> studentInfo) {
-        this.studentInfo = studentInfo;
+    public void setAvatarURL(String avatarURL) {
+        this.avatarURL = avatarURL;
     }
 
     public String getStudentId() {
-        if (studentInfo != null) {
-            return (String) studentInfo.get("studentId");
-        }
-        return null;
+        return studentId;
     }
 
-    public List<Map<String, Object>> getCertificates() {
-        if (studentInfo != null) {
-            return (List<Map<String, Object>>) studentInfo.get("certificates");
-        }
-        return null;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public List<Certificates> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(List<Certificates> certificates) {
+        this.certificates = certificates;
     }
 }

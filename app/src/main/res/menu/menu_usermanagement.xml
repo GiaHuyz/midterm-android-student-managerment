@@ -2,17 +2,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_item_removed_selected_US"
-        android:icon="@drawable/ic_baseline_delete_24"
-        android:title="Remove Selected"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/menu_item_addUS"
         android:icon="@drawable/baseline_add_24"
         android:title="Remove Selected"
         app:showAsAction="always" />
     <item
-        android:id="@+id/menu_item_view_access_history_US"
-        android:title="View access history" />
-
+        android:id="@+id/login_history"
+        android:icon="@drawable/baseline_manage_history_24"
+        android:title="Remove Selected"
+        app:showAsAction="always" />
 </menu>

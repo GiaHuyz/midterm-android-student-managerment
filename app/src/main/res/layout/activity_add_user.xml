@@ -40,21 +40,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingConstraints">
-
-
-                        <ImageView
-                            android:id="@+id/imageView10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="131dp"
-                            android:layout_marginEnd="101dp"
-                            android:src="@android:drawable/ic_menu_edit"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                        tools:ignore="MissingConstraints"/>
 
                     <TextView
                         android:id="@+id/tvTTUS"
@@ -69,30 +55,19 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/imgUS"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="36dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.498"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@tools:sample/avatars" />
-
 
                     <LinearLayout
                         android:layout_width="375dp"
                         android:layout_height="500dp"
                         android:layout_marginStart="24dp"
 
-                        android:layout_marginTop="36dp"
                         android:layout_marginEnd="24dp"
                         android:background="@drawable/white_background"
                         android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imgUS">
+                        app:layout_constraintTop_toBottomOf="@+id/tvTTUS">
 
 
                         <LinearLayout
@@ -108,7 +83,7 @@
                                 android:layout_marginTop="20dp"
                                 android:drawableStart="@drawable/baseline_credit_card_24"
                                 android:hint="Student ID"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:minHeight="48dp" />
 
                             <EditText
@@ -128,7 +103,7 @@
                                 android:layout_marginTop="20dp"
                                 android:drawableStart="@drawable/ic_iconperson"
                                 android:hint="Age"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:minHeight="48dp" />
 
                             <EditText
@@ -138,7 +113,7 @@
                                 android:layout_marginTop="20dp"
                                 android:drawableStart="@drawable/baseline_phone_forwarded_24"
                                 android:hint="Phone"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:minHeight="48dp" />
 
                             <EditText
@@ -164,6 +139,7 @@
                                     android:textSize="24dp" />
 
                                 <RadioGroup
+                                    android:id="@+id/rdRole"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:orientation="horizontal">
@@ -186,6 +162,7 @@
                                         android:id="@+id/rdRoleStudent"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:checked="true"
                                         android:text="Student"
                                         tools:ignore="TouchTargetSizeCheck" />
 
@@ -206,6 +183,7 @@
                                     android:textSize="24dp" />
 
                                 <RadioGroup
+                                    android:id="@+id/rdStatus"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:orientation="horizontal">
@@ -214,6 +192,7 @@
                                         android:id="@+id/rdStatusNormal"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:checked="true"
                                         android:text="Normal"
                                         tools:ignore="TouchTargetSizeCheck" />
 
@@ -228,7 +207,7 @@
                             </LinearLayout>
 
                             <Button
-                                android:id="@+id/btnEdit"
+                                android:id="@+id/btnAdd"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"

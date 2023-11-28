@@ -60,7 +60,7 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemViewType(int position) {
         User user = users.get(position);
-        if ("student".equals(user.getRole()) && user.getStudentInfo() != null) {
+        if ("student".equals(user.getRole()) && user.getStudentId() != null) {
             return TYPE_STUDENT;
         } else {
             return TYPE_USER;

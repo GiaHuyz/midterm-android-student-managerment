@@ -5,6 +5,10 @@ import com.example.qlsv.dto.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginModel implements LoginContract.Model {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firestore;
@@ -20,6 +24,7 @@ public class LoginModel implements LoginContract.Model {
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        logLoginHistory(email);
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         String userId = firebaseAuth.getCurrentUser().getUid();
 
@@ -28,7 +33,6 @@ public class LoginModel implements LoginContract.Model {
                                     if (documentSnapshot.exists()) {
                                         User user = documentSnapshot.toObject(User.class);
                                         if (user != null) {
-                                            user.setId(documentSnapshot.getId());
                                             listener.onSuccess(user);
                                         } else {
                                             listener.onFailure("Failed to parse user data");
@@ -42,6 +46,15 @@ public class LoginModel implements LoginContract.Model {
                         listener.onFailure(task.getException().getMessage());
                     }
                 });
+    }
+
+    private void logLoginHistory(String email) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> loginRecord = new HashMap<>();
+        loginRecord.put("email", email);
+        loginRecord.put("timestamp", new Date());
+
+        db.collection("login_history").add(loginRecord);
     }
 }
 

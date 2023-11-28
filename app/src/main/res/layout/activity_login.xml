@@ -45,20 +45,6 @@
                 android:textAppearance="?textAppearanceHeadline6">
 
             </Button>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Forget password"
-                android:id="@+id/tvForgetpassword"
-                android:padding="5dp"></TextView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Don't you have account ? Sign up here."
-                android:id="@+id/tvsignp_rep"
-                android:padding="5dp"></TextView>
 
 
         </LinearLayout>

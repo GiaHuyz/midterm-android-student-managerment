@@ -1,5 +1,7 @@
 package com.example.qlsv.presenter;
 
+import android.net.Uri;
+
 import com.example.qlsv.contract.UserEditContract;
 import com.example.qlsv.contract.UserManagementContract;
 import com.example.qlsv.dto.User;
@@ -27,6 +29,36 @@ public class UserEditPresenter implements UserEditContract.Presenter {
             @Override
             public void onUserEditFailure(Throwable t) {
                 view.displayUserEditError(t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void deleteUser(String userId) {
+        model.deleteUser(userId, new UserEditContract.Model.OnUserDeleteListener() {
+            @Override
+            public void onUserDeleteSuccess(String userId) {
+                view.displayUserDeletionSuccess(userId);
+            }
+
+            @Override
+            public void onUserDeleteFailure(Throwable t) {
+                view.displayUserDeletionError(t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void uploadImage(String userId, Uri imageUri) {
+        model.uploadImage(userId, imageUri, new UserEditContract.Model.OnImageUploadListener() {
+            @Override
+            public void onUploadSuccess(String imageUrl) {
+                view.onUploadSuccess(imageUrl);
+            }
+
+            @Override
+            public void onUploadFailure(Exception e) {
+                view.onUploadFailure(e.getMessage());
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.example.qlsv;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -51,6 +53,21 @@ public class UserManagementActivity extends AppCompatActivity implements UserMan
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        if (item.getItemId() == R.id.menu_item_addUS) {
+            intent = new Intent(UserManagementActivity.this, AddUserActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.login_history) {
+            intent = new Intent(UserManagementActivity.this, LoginHistoryActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void display(List<User> users) {
         usersAdapter.setUsers(users);
         usersAdapter.notifyDataSetChanged();
@@ -65,12 +82,7 @@ public class UserManagementActivity extends AppCompatActivity implements UserMan
 
     @Override
     public void onItemClick(User user, int position) {
-        Intent intent;
-        if ("student".equals(user.getRole()) && user.getStudentInfo() != null) {
-            intent = new Intent(this, StudentDetailActivity.class);
-        } else {
-            intent = new Intent(this, UserDetailActivity.class);
-        }
+        Intent intent = new Intent(this, UserDetailActivity.class);
         intent.putExtra("USER", user);
         startActivity(intent);
     }

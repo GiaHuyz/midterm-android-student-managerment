@@ -22,11 +22,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="411dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -36,14 +37,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="360dp"
                         android:background="@drawable/top_background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingConstraints">
 
 
                         <ImageView
-                            android:id="@+id/imageView10"
+                            android:id="@+id/btnUploadImage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="128dp"
+                            android:layout_marginTop="120dp"
                             android:layout_marginEnd="92dp"
                             android:src="@android:drawable/ic_menu_edit"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -67,60 +72,46 @@
 
                     <ImageView
                         android:id="@+id/imgUS"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:layout_marginTop="36dp"
+                        android:src="@drawable/uploadimg"
+                        android:scaleType="fitXY"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.498"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <TextView
-                        android:id="@+id/tvnameUS"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="Gia Huy"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/imgUS"
-                        app:layout_constraintStart_toStartOf="@+id/imgUS"
-                        app:layout_constraintTop_toBottomOf="@+id/imgUS" />
-
-                    <TextView
-                        android:id="@+id/tvMail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="giahuy@gmail.com"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="@+id/tvnameUS"
-                        app:layout_constraintStart_toStartOf="@+id/tvnameUS"
-                        app:layout_constraintTop_toBottomOf="@+id/tvnameUS" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="450dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="32dp"
+                        android:layout_width="375dp"
+                        android:layout_height="500dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="24dp"
 
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="24dp"
                         android:background="@drawable/white_background"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvMail">
+                        app:layout_constraintTop_toBottomOf="@+id/imgUS">
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_margin="12dp"
+                            android:layout_height="500dp"
+                            android:layout_margin="5dp"
                             android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/edtMSSV"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:drawableStart="@drawable/baseline_credit_card_24"
+                                android:hint="Student ID"
+                                android:inputType="number"
+                                android:minHeight="48dp" />
 
                             <EditText
                                 android:id="@+id/edtName"
@@ -128,7 +119,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:drawableStart="@drawable/ic_iconperson"
-                                android:ems="10"
                                 android:hint="Name"
                                 android:inputType="text"
                                 android:minHeight="48dp" />
@@ -139,9 +129,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:drawableStart="@drawable/ic_iconperson"
-                                android:ems="10"
                                 android:hint="Age"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:minHeight="48dp" />
 
                             <EditText
@@ -150,9 +139,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:drawableStart="@drawable/baseline_phone_forwarded_24"
-                                android:ems="10"
                                 android:hint="Phone"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:minHeight="48dp" />
 
                             <EditText
@@ -161,7 +149,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:drawableStart="@drawable/baseline_mark_email_read_24"
-                                android:ems="10"
                                 android:hint="Email"
                                 android:inputType="text"
                                 android:minHeight="48dp" />
@@ -188,6 +175,7 @@
                                         android:id="@+id/rdRoleAdmin"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:checked="true"
                                         android:text="Admin"
                                         tools:ignore="TouchTargetSizeCheck" />
 
@@ -231,6 +219,7 @@
                                         android:id="@+id/rdStatusNormal"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:checked="true"
                                         android:text="Normal"
                                         tools:ignore="TouchTargetSizeCheck" />
 
@@ -244,15 +233,46 @@
                                 </RadioGroup>
                             </LinearLayout>
 
-
-                            <Button
-                                android:id="@+id/btnEdit"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="10dp"
-                                android:text="Save" />
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btnDelete"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="10dp"
+                                    android:backgroundTint="#BD2C2C"
+                                    android:minHeight="48dp"
+                                    android:text="Delele" />
+
+                                <Button
+                                    android:id="@+id/btnEdit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:minHeight="48dp"
+                                    android:text="Save" />
+
+                                <Button
+                                    android:id="@+id/btnCertificates"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="20dp"
+                                    android:backgroundTint="#1C91AE"
+                                    android:minHeight="48dp"
+                                    android:text="Certificates" />
+
+                            </LinearLayout>
+
                         </LinearLayout>
+
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
