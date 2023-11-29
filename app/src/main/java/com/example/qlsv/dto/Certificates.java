@@ -1,14 +1,27 @@
 package com.example.qlsv.dto;
 
-public class Certificates {
+import java.io.Serializable;
+
+public class Certificates implements Serializable {
+    private String id;
     private String title;
     private String issueDate;
     private String expiryDate;
+
+    public Certificates() {}
 
     public Certificates(String title, String issueDate, String expiryDate) {
         this.title = title;
         this.issueDate = issueDate;
         this.expiryDate = expiryDate;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {

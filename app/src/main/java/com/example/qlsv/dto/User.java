@@ -16,7 +16,6 @@ public class User implements Serializable {
     private String avatarURL;
 
     private String studentId;
-    private List<Certificates> certificates;
 
     public User() {
     }
@@ -101,13 +100,5 @@ public class User implements Serializable {
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
-    }
-
-    public List<Certificates> getCertificates() {
-        return certificates;
-    }
-
-    public void setCertificates(List<Certificates> certificates) {
-        this.certificates = certificates;
     }
 }

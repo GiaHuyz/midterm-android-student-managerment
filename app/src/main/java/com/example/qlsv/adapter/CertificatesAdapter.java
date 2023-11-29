@@ -10,14 +10,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.qlsv.R;
 import com.example.qlsv.dto.Certificates;
+import com.example.qlsv.dto.User;
 
 import java.util.List;
 
 public class CertificatesAdapter extends RecyclerView.Adapter<CertificatesAdapter.CertificatesViewHolder>  {
     private List<Certificates> certificates;
+    private OnItemClickListener listener;
 
-    public CertificatesAdapter(List<Certificates> certificates) {
+    public CertificatesAdapter(List<Certificates> certificates, OnItemClickListener listener) {
         this.certificates = certificates;
+        this.listener = listener;
+    }
+
+    public void setCertificates(List<Certificates> certificates) {
+        this.certificates = certificates;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Certificates certificates, int position);
     }
 
     @NonNull
@@ -30,7 +41,7 @@ public class CertificatesAdapter extends RecyclerView.Adapter<CertificatesAdapte
     @Override
     public void onBindViewHolder(@NonNull CertificatesAdapter.CertificatesViewHolder holder, int position) {
         Certificates certificate = certificates.get(position);
-        holder.bind(certificate);
+        holder.bind(certificate, position, listener);
     }
 
     @Override
@@ -40,19 +51,21 @@ public class CertificatesAdapter extends RecyclerView.Adapter<CertificatesAdapte
 
 
     public static class CertificatesViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvEmail, tvIssueDate, tvExpiryDate;
 
+        private TextView tvTitle, tvIssueDate, tvExpiryDate;
         public CertificatesViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvEmail = itemView.findViewById(R.id.tvEmail);
+            tvTitle = itemView.findViewById(R.id.tvTitle);
             tvIssueDate = itemView.findViewById(R.id.tvIssueDate);
             tvExpiryDate = itemView.findViewById(R.id.tvExpiryDate);
         }
 
-        public void bind(Certificates certificate) {
-            tvEmail = itemView.findViewById(R.id.tvEmail);
-            tvIssueDate = itemView.findViewById(R.id.tvIssueDate);
-            tvExpiryDate = itemView.findViewById(R.id.tvExpiryDate);
+        public void bind(Certificates certificate, int position, OnItemClickListener listener) {
+            tvTitle.setText(certificate.getTitle());
+            tvIssueDate.setText(certificate.getIssueDate());
+            tvExpiryDate.setText(certificate.getExpiryDate());
+
+            itemView.setOnClickListener(v -> listener.onItemClick(certificate, position));
         }
     }
 }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,6 +27,8 @@ public class UserManagementActivity extends AppCompatActivity implements UserMan
     private ActivityUserManagementBinding binding;
     private UserManagementContract.Presenter presenter;
     private UsersAdapter usersAdapter;
+    private String profile;
+    private User userProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +38,14 @@ public class UserManagementActivity extends AppCompatActivity implements UserMan
         setContentView(view);
 
         setSupportActionBar(binding.toolbar);
-        User user = (User) getIntent().getSerializableExtra("USER");
+        profile = getIntent().getStringExtra("PROFILE");
 
         binding.rvUsers.setLayoutManager(new LinearLayoutManager(this));
         usersAdapter = new UsersAdapter(new ArrayList<>(), this);
         binding.rvUsers.setAdapter(usersAdapter);
 
         presenter = new UserManagementPresenter(this);
-        presenter.loadUsers(user.getId());
+        presenter.loadUsers(profile);
     }
 
     @Override
@@ -62,6 +65,9 @@ public class UserManagementActivity extends AppCompatActivity implements UserMan
         } else if (item.getItemId() == R.id.login_history) {
             intent = new Intent(UserManagementActivity.this, LoginHistoryActivity.class);
             startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.profile) {
+            presenter.getProfile(profile);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -87,4 +93,10 @@ public class UserManagementActivity extends AppCompatActivity implements UserMan
         startActivity(intent);
     }
 
+    @Override
+    public void display(User user) {
+        Intent intent = new Intent(UserManagementActivity.this, UserDetailActivity.class);
+        intent.putExtra("PROFILE", user);
+        startActivity(intent);
+    }
 }

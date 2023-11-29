@@ -2,7 +2,7 @@ package com.example.qlsv.model;
 
 import androidx.annotation.NonNull;
 
-import com.example.qlsv.contract.UserManagementContract;
+import com.example.qlsv.contract.ListStudentContract;
 import com.example.qlsv.dto.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,34 +17,35 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-public class UserManagementModel implements UserManagementContract.Model {
+public class ListStudentModel implements ListStudentContract.Model {
     private FirebaseFirestore firestore;
 
-    public UserManagementModel() {
+    public ListStudentModel() {
         firestore = FirebaseFirestore.getInstance();
     }
 
     @Override
-    public void getUsers(String currentUserId, OnFinishedListener listener) {
-        firestore.collection("users").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot snapshots,
-                                @Nullable FirebaseFirestoreException e) {
-                if (e != null) {
-                    listener.onFailure(e);
-                    return;
-                }
+    public void getStudents(OnFinishedListener listener) {
+        firestore.collection("users")
+                .whereEqualTo("role", "student")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            listener.onFailure(e);
+                            return;
+                        }
 
-                List<User> users = new ArrayList<>();
-                for (DocumentSnapshot doc : snapshots) {
-                    User user = doc.toObject(User.class);
-                    if(!doc.getId().equals(currentUserId)){
-                        users.add(user);
+                        List<User> students = new ArrayList<>();
+                        for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()) {
+                            User user = snapshot.toObject(User.class);
+                            if (user != null) {
+                                students.add(user);
+                            }
+                        }
+                        listener.onFinished(students);
                     }
-                }
-                listener.onFinished(users);
-            }
-        });
+                });
     }
 
     @Override
@@ -70,4 +71,3 @@ public class UserManagementModel implements UserManagementContract.Model {
                 });
     }
 }
-

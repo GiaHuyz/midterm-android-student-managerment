@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -37,15 +38,44 @@ public class UserDetailActivity extends AppCompatActivity implements UserEditCon
         setContentView(view);
 
         presenter = new UserEditPresenter(this);
-        user = (User) getIntent().getSerializableExtra("USER");
+
+        if (getIntent().getSerializableExtra("USER") != null) {
+            user = (User) getIntent().getSerializableExtra("USER");
+        } else {
+            user = (User) getIntent().getSerializableExtra("PROFILE");
+        }
+
+        String isManager = getIntent().getStringExtra("IS_MANAGER");
+        String isStudent = getIntent().getStringExtra("IS_STUDENT");
+
+        loadInfoUser(user);
+        delele(user.getId());
+        editUser(user);
+
+        if(isManager != null || user.getRole().equals("manager")) {
+            binding.layoutRole.setVisibility(View.GONE);
+        } else if (isStudent != null) {
+            binding.layoutRole.setVisibility(View.GONE);
+            binding.layoutStatus.setVisibility(View.GONE);
+            binding.layoutBtn.setVisibility(View.GONE);
+            binding.edtMSSV.setEnabled(false);
+            binding.edtPhone.setEnabled(false);
+            binding.edtAge.setEnabled(false);
+            binding.edtEmail.setEnabled(false);
+            binding.edtMSSV.setEnabled(false);
+            binding.edtName.setEnabled(false);
+        }
+
 
         binding.rdRole.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.rdRoleStudent) {
                     binding.edtMSSV.setVisibility(View.VISIBLE);
+                    binding.btnCertificates.setVisibility(View.VISIBLE);
                 } else {
                     binding.edtMSSV.setVisibility(View.GONE);
+                    binding.btnCertificates.setVisibility(View.GONE);
                 }
             }
         });
@@ -57,9 +87,15 @@ public class UserDetailActivity extends AppCompatActivity implements UserEditCon
             }
         });
 
-        loadInfoUser(user);
-        editUser(user);
-        delele(user.getId());
+        binding.btnCertificates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDetailActivity.this, ListCertificatesActivity.class);
+                intent.putExtra("STUDENT_ID", user.getId());
+                intent.putExtra("MSSV", user.getStudentId());
+                startActivity(intent);
+            }
+        });
     }
 
     private void selectImage() {
@@ -110,30 +146,29 @@ public class UserDetailActivity extends AppCompatActivity implements UserEditCon
                     return;
                 }
 
-                User newUser = new User();
-                newUser.setId(user.getId());
+                user.setId(user.getId());
 
                 if(binding.edtMSSV.getVisibility() == View.VISIBLE) {
-                    newUser.setStudentId(binding.edtMSSV.getText().toString());
+                    user.setStudentId(binding.edtMSSV.getText().toString());
                 } else {
-                    newUser.setStudentId(null);
+                    user.setStudentId(null);
                 }
 
-                newUser.setName(binding.edtName.getText().toString());
-                newUser.setEmail(binding.edtEmail.getText().toString());
-                newUser.setAge(Integer.parseInt(binding.edtAge.getText().toString()));
+                user.setName(binding.edtName.getText().toString());
+                user.setEmail(binding.edtEmail.getText().toString());
+                user.setAge(Integer.parseInt(binding.edtAge.getText().toString()));
 
                 int selectedRoleId = binding.rdRole.getCheckedRadioButtonId();
                 rdRole = binding.getRoot().findViewById(selectedRoleId);
-                newUser.setRole(rdRole.getText().toString().toLowerCase());
+                user.setRole(rdRole.getText().toString().toLowerCase());
 
                 int selectedStatusId = binding.rdStatus.getCheckedRadioButtonId();
                 rdStatus = binding.getRoot().findViewById(selectedStatusId);
-                newUser.setStatus(rdStatus.getText().toString().toLowerCase());
+                user.setStatus(rdStatus.getText().toString().toLowerCase());
 
-                newUser.setPhone(binding.edtPhone.getText().toString());
+                user.setPhone(binding.edtPhone.getText().toString());
 
-                presenter.editUser(newUser);
+                presenter.editUser(user);
             }
         });
     }
@@ -141,9 +176,11 @@ public class UserDetailActivity extends AppCompatActivity implements UserEditCon
     private void loadInfoUser(User user) {
         if(user.getStudentId() != null) {
             binding.edtMSSV.setVisibility(View.VISIBLE);
+            binding.btnCertificates.setVisibility(View.VISIBLE);
             binding.edtMSSV.setText(user.getStudentId());
         } else {
             binding.edtMSSV.setVisibility(View.GONE);
+            binding.btnCertificates.setVisibility(View.GONE);
         }
         binding.edtName.setText(user.getName());
         binding.edtPhone.setText(user.getPhone());

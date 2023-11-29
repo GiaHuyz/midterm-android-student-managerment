@@ -22,8 +22,7 @@ public class UserEditModel implements UserEditContract.Model {
 
     @Override
     public void editUser(User user, OnUserEditListener listener) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users").document(user.getId())
+        firestore.collection("users").document(user.getId())
                 .set(user)
                 .addOnSuccessListener(aVoid -> listener.onUserEditSuccess())
                 .addOnFailureListener(e -> listener.onUserEditFailure(e));
@@ -31,8 +30,7 @@ public class UserEditModel implements UserEditContract.Model {
 
     @Override
     public void deleteUser(String userId, OnUserDeleteListener listener) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users").document(userId)
+        firestore.collection("users").document(userId)
                 .delete()
                 .addOnSuccessListener(aVoid -> listener.onUserDeleteSuccess(userId))
                 .addOnFailureListener(e -> listener.onUserDeleteFailure(e));

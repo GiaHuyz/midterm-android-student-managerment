@@ -36,18 +36,20 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         switch (user.getRole()) {
             case "admin":
                 intent = new Intent(LoginActivity.this, UserManagementActivity.class);
+                intent.putExtra("PROFILE", user.getId());
                 break;
             case "manager":
                 intent = new Intent(LoginActivity.this, StudentManagementActivity.class);
+                intent.putExtra("PROFILE", user);
                 break;
             case "student":
                 intent = new Intent(LoginActivity.this, UserDetailActivity.class);
+                intent.putExtra("IS_STUDENT", "TRUE");
                 break;
             default:
                 Toast.makeText(this, "Invalid role", Toast.LENGTH_SHORT).show();
                 return;
         }
-        intent.putExtra("USER", user);
         startActivity(intent);
         finish();
     }

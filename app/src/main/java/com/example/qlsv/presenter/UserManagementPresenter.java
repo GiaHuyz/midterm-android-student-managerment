@@ -29,5 +29,20 @@ public class UserManagementPresenter implements UserManagementContract.Presenter
             }
         });
     }
+
+    @Override
+    public void getProfile(String currentUserId) {
+        model.getProfile(currentUserId, new UserManagementContract.Model.OnFinishedProfile() {
+            @Override
+            public void onFinished(User user) {
+                view.display(user);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                view.displayError(t.getMessage());
+            }
+        });
+    }
 }
 

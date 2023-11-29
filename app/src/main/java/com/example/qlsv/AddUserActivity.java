@@ -29,6 +29,10 @@ public class AddUserActivity extends AppCompatActivity implements UserAddContact
         View view = binding.getRoot();
         setContentView(view);
 
+        if(getIntent().getStringExtra("MANAGER") != null) {
+            binding.layoutRole.setVisibility(View.GONE);
+        }
+
         binding.rdRole.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -121,4 +125,5 @@ public class AddUserActivity extends AppCompatActivity implements UserAddContact
     public void displayUserAddError(String message) {
         Toast.makeText(this, "Failed to add user: " + message, Toast.LENGTH_SHORT).show();
     }
+
 }

@@ -1,20 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_item_addUS"
+        android:id="@+id/add_certificate"
         android:icon="@drawable/baseline_add_24"
-        android:title="Remove Selected"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/login_history"
-        android:icon="@drawable/baseline_manage_history_24"
         android:title="Remove Selected"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/baseline_account_circle_24"
+        android:id="@+id/import_file"
+        android:icon="@drawable/baseline_upload_file_24"
+        android:title="Remove Selected"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/export_file"
+        android:icon="@drawable/baseline_file_download_24"
         android:title="Remove Selected"
         app:showAsAction="always" />
 </menu>
